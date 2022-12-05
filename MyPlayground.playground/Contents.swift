@@ -11,7 +11,7 @@ func isNumberPrime(num: Int ) -> Bool {
     else if(num == 1 || num == 2 || num == 3){return true}
     else {
         for value in 2..<(num){
-            print(value)
+            
             if (num % value == 0){return false}
             else {continue}
         }
@@ -30,10 +30,9 @@ func getNumerosPrimos(amount: Int=100) -> Array<Int> {
     while flag {
         if (isNumberPrime(num: index) == true) {
             listPrime.append(index)
-            print(listPrime)
         }
         index += 1
-        print(index)
+        
         if listPrime.count >= amount {flag = false} else{continue}
     }
     print (listPrime)
@@ -185,12 +184,26 @@ class GroupWorldCup{
         case 0...3 : print("deben ser 4 jugadores, declara de nuvo el grupo")/* para probar con el default suficiente*/
         case 4:
             var index : Int = 0
-            for posLocal in 0..<self.player.count{
+            var flag : Bool = false
+            for posLocal in 0..<3 {
+                /* el loop for deberia de ser  for posLocal in 0..< ((self.player.count)-1) pero me da error
+                 no interesa que llega al último equipo, ya ha jugado contra todos*/
                 for posVisit in 1..<self.player.count{
                     match(local: self.player[posLocal], visit: self.player[posVisit + index])
-                    index += 1
-                    if(index >= 3){break}
+                    if (flag == false && (posVisit + index ) == 2 && index == 1) { flag = true }
+                    else if(flag == true  && (posVisit + index ) == 1 && index == 2){
+                        /* Es una forma fea de parar los partidos;  debido a la suma de index sale de l range, por lo que he tenido que poner parches de flags y condicionales para saber pararlo*/
+                        switch (flag){
+                        case true: break
+                        default: continue
+                            
+                        }
+                    }
+                    else if flag == true {break}
                 }
+                print(index)
+                index += 1
+                print("\(index)  +1")
             }
         default:
             print("¡ 4 equipos!")
@@ -198,6 +211,7 @@ class GroupWorldCup{
     }
 }
 
+let groupA = GroupWorldCup(group: "A", player: qatarParticipants22)
 
-
+groupA.choosePlayersToPlay()
 
