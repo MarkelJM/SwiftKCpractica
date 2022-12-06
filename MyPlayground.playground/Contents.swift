@@ -154,14 +154,82 @@ let worldCupqatar22 = WorldCup(participants : qatarParticipants22)
 
 //7. EJERCICIO + 8.EJERCICIO(como una función dentro de la clase grupo)
 
-class GroupWorldCup{
+class MatchOperation {
+    var players : [NationalTeam]
+    init(teams : [NationalTeam]){
+        self.players = teams
+    }
+   
+    
+    func playMatch (local : Int, visit: Int) -> (Int, Int, Bool) {
+        /* devolvemos una tupla con tres elementos el 1. ganador, 2. perdedor 3 si es empate sí o No*/
+        
+        let localPlayer : Int = local
+        let visitPlayer : Int = visit
+        let resultLocal = Int.random(in: 0...10)
+        let resultVisit = Int.random(in: 0...10)
+        var finalresulTuple : (Int, Int, Bool)
+        print("\(self.players[localPlayer].name)  \(resultLocal) - \(resultVisit) \(self.players[visitPlayer].name)")
+        if( (resultLocal - resultVisit) > 0 ){
+            finalresulTuple = (localPlayer,visitPlayer, false)}
+        else if( (resultLocal - resultVisit) < 0 ){
+            finalresulTuple = (visitPlayer,localPlayer, false)}
+        else {
+            finalresulTuple = (localPlayer,visitPlayer, true)}
+        return finalresulTuple
+    }
+}
+class Points{
+    var classification : [Int : Int ]
+    var players : [NationalTeam]
+    init(teams: [NationalTeam], classification : [Int:Int]){
+        self.players = teams
+        self.classification = classification
+    }
+    
+    
+    /* reparto de puntos; como no he conseguido declarar(no se porqué) un grupo con self que sería más fácil de actualizar
+     tendré que darle el elemento clasificación al repartir puntos y devolve el mismo actualizado cada vez*/
+    func givePoint (winner: Int, loser: Int, tie: Bool,  started : Bool) ->[Int: Int]{
+        
+        
+        switch (started){
+        case false: break
+        case true:
+            let empate : Bool = tie
+            
+            switch (empate){
+            case true:
+                self.classification[winner]! += 1; self.classification[loser]! += 1
+                
+            case false:
+                self.classification[winner]! += 3 ; self.classification[loser]! += 0
+            }
+        }
+        print(self.classification)
+        return self.classification
+    }
+    func finalClassification() -> [Int:Int]{
+        return self.classification
+    }
+}
+
+
+class GroupWorldCup {
     var name : String
     var player : [NationalTeam]
+    
+    
+    
     init(group letter: String ,player : [NationalTeam]){
         self.player = player
         self.name = letter
+        
+        
     }
-    
+       /*
+     ///Mensaje: mi idea era hacer todo usando objetos NationalTeam. que son las selecciones, pero en la función de crear grupo me salta un error de no 'Hasable'-> cambio formato. Entonces todo será según la posición incial del equipo en la lista declarada en el init;
+          Lo saco fuera como una clase
     private func match (local : NationalTeam, visit: NationalTeam) -> (NationalTeam, NationalTeam, Bool) {
         /* devolvemos una tupla con tres elementos el 1. ganador, 2. perdedor 3 si es empate sí o No*/
         let localPlayer : NationalTeam = local
@@ -178,40 +246,86 @@ class GroupWorldCup{
             finalresulTuple = (localPlayer,visitPlayer, true)}
         return finalresulTuple
     }
+     */
+    func createClassification( ) -> [ Int : Int]{
+        /* creamos un diccionario con la lista de grupos que facilitamos en el init*/
+        var clasificationGroup : [Int:Int] = [:]
+        let initialPoint = 0
+        var teamAmount : Int = (self.player.count) - 1
+        for initialPos in 0...teamAmount {
+            clasificationGroup[initialPos] = 0
+
+        }
+        return clasificationGroup
+        
+    }
     
-    func choosePlayersToPlay (){
+    
+    /* Método que se encarga del grupo. Selecciona los equipos y llama a matchy para obtener un resultado
+     Para acabar se encargará llamar al reparto de puntos*/
+    func playGroupWC () -> [Int:Int]{
+
+        var groupclassification = Points(teams: self.player, classification: createClassification())
+        groupclassification.givePoint(winner: 1, loser: 2, tie: false, started: false)
+        //var groupPosition = up(winner: 1, loser: 2, tie: false, updateClassification: groupclassification, started: false)
+        var gameMatch = MatchOperation(teams: self.player)
+        var positionVisit : Int = 0
         switch(self.player.count){
-        case 0...3 : print("deben ser 4 jugadores, declara de nuvo el grupo")/* para probar con el default suficiente*/
+        case 0...3 : print("deben ser 4 jugadores, declara de nuvo el grupo")/* para probar, con el default en última posicion suficiente*/
         case 4:
-            var index : Int = 0
-            var flag : Bool = false
+            var index : Int = 0 /* contador para que no se repitan los primeros equipos*/
+            var flag : Bool = false /* para ser activado en un momento que saldrá "out of range" y que salte el primer segundo For e ire a al siguiente valor; en la segunda ocasión que vaya a saltar "out of range" saldrá del primer For; Ve los if, else if, else if de abajo*/
             for posLocal in 0..<3 {
                 /* el loop for deberia de ser  for posLocal in 0..< ((self.player.count)-1) pero me da error
                  no interesa que llega al último equipo, ya ha jugado contra todos*/
                 for posVisit in 1..<self.player.count{
-                    match(local: self.player[posLocal], visit: self.player[posVisit + index])
-                    if (flag == false && (posVisit + index ) == 2 && index == 1) { flag = true }
+                    positionVisit = posVisit + index
+                    var result = gameMatch.playMatch(local: posLocal, visit: positionVisit)
+                    groupclassification.givePoint(winner: result.0, loser: result.1, tie: result.2, started: true)
+                    //givePoint(winner: result.0, loser: result.1, tie: result.2, updateClassification: groupPosition, started: true)
+                    if (flag == false && (posVisit + index ) == 2 && index == 1) { flag = true }/*activa el flag*/
                     else if(flag == true  && (posVisit + index ) == 1 && index == 2){
                         /* Es una forma fea de parar los partidos;  debido a la suma de index sale de l range, por lo que he tenido que poner parches de flags y condicionales para saber pararlo*/
                         switch (flag){
-                        case true: break
+                        case true: break/*para que salte este Foor y vaya a la penúltima selección*/
                         default: continue
                             
                         }
                     }
-                    else if flag == true {break}
+                    else if flag == true {break}/*salta del último valor y acaba*/
                 }
-                print(index)
+
                 index += 1
-                print("\(index)  +1")
+            
             }
         default:
             print("¡ 4 equipos!")
+        
         }
+        print(groupclassification.finalClassification())
+        return groupclassification.finalClassification()
+        
+    }
+    func showLeaders( classifificationGroup : [Int: Int], continueInCup number : Int){
+        
     }
 }
 
 let groupA = GroupWorldCup(group: "A", player: qatarParticipants22)
 
-groupA.choosePlayersToPlay()
+let  groupAresults : [Int:Int] = groupA.playGroupWC()
 
+func continueWC(players group : [NationalTeam],points classificationPoints : [Int:Int], toNext amount : Int)->[NationalTeam]{
+    let players = group
+    let points = classificationPoints
+    let number = amount
+    var classifacted1 : Int = 0
+    var classificated2 : Int = 0
+    var classificatedList : [NationalTeam] = []
+    for (key, value) in points{
+        switch value > classifacted1 {
+        case true: classifacted1 = points.value
+        case false: continue
+        }
+    }
+}
