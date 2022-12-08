@@ -126,15 +126,6 @@ class NationalTeam {
     }
 
 }
-let colombiaList  = [Member.coach("gabriel"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
-let argentinaLis  = [Member.coach("rene"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
-let mexicoList  = [Member.coach("andres"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
-let chileList  = [Member.coach("paco"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
-            
-let colombiaTeam = NationalTeam(name : "Colombia", plantilla : colombiaList)
-let argentinaTeam = NationalTeam(name : "Argentina", plantilla : colombiaList)
-let mexicoTeam = NationalTeam(name : "Mexico", plantilla : colombiaList)
-let chileTeam = NationalTeam(name : "Chile", plantilla : colombiaList)
 
 
     
@@ -147,10 +138,10 @@ class WorldCup {
     init(participants : [NationalTeam]){
         self.participants = participants
     }
+    
 }
 
-let qatarParticipants22 : [NationalTeam] = [colombiaTeam, argentinaTeam, mexicoTeam, chileTeam]
-let worldCupqatar22 = WorldCup(participants : qatarParticipants22)
+
 
 //7. EJERCICIO + 8.EJERCICIO(como una función dentro de la clase grupo)
 
@@ -263,7 +254,7 @@ class GroupWorldCup {
     
     /* Método que se encarga del grupo. Selecciona los equipos y llama a matchy para obtener un resultado
      Para acabar se encargará llamar al reparto de puntos*/
-    func playGroupWC () -> [Int:Int]{
+    func playGroupWC () -> ([NationalTeam],[Int:Int]) {
 
         var groupclassification = Points(teams: self.player, classification: createClassification())
         groupclassification.givePoint(winner: 1, loser: 2, tie: false, started: false)
@@ -302,30 +293,71 @@ class GroupWorldCup {
             print("¡ 4 equipos!")
         
         }
-        print(groupclassification.finalClassification())
-        return groupclassification.finalClassification()
+        print("Clasificación final: \(groupclassification.finalClassification())")
+        return (self.player, groupclassification.finalClassification())
         
     }
-    func showLeaders( classifificationGroup : [Int: Int], continueInCup number : Int){
-        
-    }
+    
 }
+
+
+
+func continueWC(players group : [NationalTeam],points classificationPoints : [Int:Int], toNext amount : Int)->[NationalTeam]{
+    
+    let players = group
+    let points = classificationPoints
+    let number = (amount - 1)
+    var classificatedList : [NationalTeam] = []
+    var valuesList = Array(points.values)
+    var element : Int
+    var avoidElementTeams : [Int] = [] /* ya que la funcion localizador de abajo no le importa si varios equipos tienen la puntuacion repetida, devolveria la primera: Ejemplo Si Argentina y Colombia tienen 6 puntos, devolvería dos veces Argentina. En esta aádiremos la posición de la lista  de equipos [NationalTeam], mediante un condiciaonal evitaremos repetir la posicion */
+    var valuesListSort = valuesList.sorted(by: >)
+    print(valuesListSort)
+    for i in 0...number{
+        /* como en el mundial se clasifican 2 equipos por grupo seria sificiente poner  0...2, pero estas funciones pueden servir para la clasificatoria al mundial y como desconozco guantos grupos pasan lo pongo como eleccionable. SI pusiera un número mágico sería más rápido*/
+        element  = localizador(puntos: points, valor: valuesListSort[i], lista: avoidElementTeams)
+        avoidElementTeams.append(element)
+        classificatedList.append(players[element])
+        print(classificatedList[i].name, " \(i) equipo")
+        
+    }
+    
+    func localizador(puntos: [Int: Int], valor : Int, lista : [Int]) -> (Int){
+        var pos : Int = 0
+        for(key, value) in puntos{
+            if (valor == value && !lista.contains(key)){
+                pos = key
+            }
+        }
+        return pos
+    }
+    print(classificatedList[0].name, classificatedList[1].name)
+    return classificatedList
+    
+    /* let valuesListSort = valuesList.sort(by: >)
+    for num in points{
+        switch(num){
+        case let x where(valuesListSort[0] == num.value): continue
+        }
+    }*/
+}
+
+let colombiaList  = [Member.coach("gabriel"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let argentinaLis  = [Member.coach("rene"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let mexicoList  = [Member.coach("andres"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let chileList  = [Member.coach("paco"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+            
+let colombiaTeam = NationalTeam(name : "Colombia", plantilla : colombiaList)
+let argentinaTeam = NationalTeam(name : "Argentina", plantilla : colombiaList)
+let mexicoTeam = NationalTeam(name : "Mexico", plantilla : colombiaList)
+let chileTeam = NationalTeam(name : "Chile", plantilla : colombiaList)
+
+let qatarParticipants22 : [NationalTeam] = [colombiaTeam, argentinaTeam, mexicoTeam, chileTeam]
+let worldCupqatar22 = WorldCup(participants : qatarParticipants22)
+
 
 let groupA = GroupWorldCup(group: "A", player: qatarParticipants22)
 
-let  groupAresults : [Int:Int] = groupA.playGroupWC()
+let  groupAresults :([NationalTeam],[Int:Int]) = groupA.playGroupWC()
+let leaders : [NationalTeam] = continueWC(players: groupAresults.0, points: groupAresults.1, toNext: 2)
 
-func continueWC(players group : [NationalTeam],points classificationPoints : [Int:Int], toNext amount : Int)->[NationalTeam]{
-    let players = group
-    let points = classificationPoints
-    let number = amount
-    var classifacted1 : Int = 0
-    var classificated2 : Int = 0
-    var classificatedList : [NationalTeam] = []
-    for (key, value) in points{
-        switch value > classifacted1 {
-        case true: classifacted1 = points.value
-        case false: continue
-        }
-    }
-}
