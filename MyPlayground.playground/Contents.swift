@@ -131,6 +131,8 @@ class NationalTeam {
     
     
 //6. EJERCICIO
+/* RECRAREMOS EL MUNDIAL DE QATAR EN LA CLASE WorldCup*/
+print(" Qatar World Cuo 2022")
     
 class WorldCup {
     var participants: [NationalTeam] = []
@@ -360,4 +362,5 @@ let groupA = GroupWorldCup(group: "A", player: qatarParticipants22)
 
 let  groupAresults :([NationalTeam],[Int:Int]) = groupA.playGroupWC()
 let leaders : [NationalTeam] = continueWC(players: groupAresults.0, points: groupAresults.1, toNext: 2)
+
 
