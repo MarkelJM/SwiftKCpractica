@@ -127,21 +127,85 @@ class NationalTeam {
 
 }
 
+///CREAMOS PLANTILLA DE LAS SELECCIONES 32. PLANTILLAS
 
-    
+let paisesBajosList  = [Member.coach("Van der Poel"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let senegalList  = [Member.coach("Rene"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let ecuadorList  = [Member.coach("andres"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let qatarList  = [Member.coach("XXX"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let inglaterraLiest  = [Member.coach("Michael"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let usaList  = [Member.coach("Jerry"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let iranList  = [Member.coach("Fahmad"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let galesList  = [Member.coach("Gareth"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let poloniaList  = [Member.coach("Michel"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let argentinaLis  = [Member.coach("rene"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let mexicoList  = [Member.coach("andres"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let arabiasaudiList  = [Member.coach("Ale"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let dinamarcaList  = [Member.coach("gabriel"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let franciaList  = [Member.coach("rene"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let australiaList  = [Member.coach("andres"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let tunezList  = [Member.coach("paco"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let japonList  = [Member.coach("Van der Poel"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let españaList  = [Member.coach("Rene"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let alemaniaList  = [Member.coach("andres"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let costaricaList  = [Member.coach("XXX"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let marruecosList  = [Member.coach("Michael"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let croaciaList  = [Member.coach("Jerry"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let belgicaList  = [Member.coach("Fahmad"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let canadaList  = [Member.coach("Gareth"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let brazilList  = [Member.coach("Michel"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let suizaList  = [Member.coach("rene"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let camerunList  = [Member.coach("andres"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let serbiaList  = [Member.coach("Ale"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let portugalList  = [Member.coach("gabriel"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let coreadelsurList  = [Member.coach("rene"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let uruguayList  = [Member.coach("andres"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+let ghanaList  = [Member.coach("paco"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+
+///CREAMOS  LOS OBJETOS DE CADA NACION
+
+let paisesbajosTeam = NationalTeam(name : "Países Bajor", plantilla : paisesBajosList)
+let senegalTeam = NationalTeam(name : "Senegal", plantilla : senegalList)
+let ecuadorTeam = NationalTeam(name : "Ecuador", plantilla : ecuadorList)
+let qatarTeam = NationalTeam(name : "Qatar", plantilla : qatarList)
+let inglaterraTeam = NationalTeam(name : "Inglaterra", plantilla : inglaterraLiest)
+let usaTeam = NationalTeam(name : "USA", plantilla : usaList)
+let iranTeam = NationalTeam(name : "Irán", plantilla : iranList)
+let galesTeam = NationalTeam(name : "Gales", plantilla : galesList)
+let poloniaTeam = NationalTeam(name : "Polonia", plantilla : poloniaList)
+let argentinaTeam = NationalTeam(name : "Argentina", plantilla : argentinaLis)
+let mexicoTeam = NationalTeam(name : "Mexico", plantilla : mexicoList)
+let arabiasaudiTeam = NationalTeam(name : "Arabia Saudí", plantilla : arabiasaudiList)
+let franciaTeam = NationalTeam(name : "Francia", plantilla : franciaList)
+let australiaTeam = NationalTeam(name : "Australia", plantilla : australiaList)
+let tunezTeam = NationalTeam(name : "Túnez", plantilla : tunezList)
+let dinamarcaTeam = NationalTeam(name : "Dinamarca", plantilla : dinamarcaList)
+let japonTeam = NationalTeam(name : "Japón", plantilla : japonList)
+let españaTeam = NationalTeam(name : "España", plantilla : españaList)
+let alemaniaTeam = NationalTeam(name : "Alemania", plantilla : alemaniaList)
+let costaricaTeam = NationalTeam(name : "Costa Rica", plantilla : costaricaList)
+let marruecosTeam = NationalTeam(name : "Marruecos", plantilla : marruecosList)
+let croaciaTeam = NationalTeam(name : "Croacia", plantilla : croaciaList)
+let belgicaTeam = NationalTeam(name : "Bélgica", plantilla : belgicaList)
+let canadaTeam = NationalTeam(name : "Canada", plantilla : canadaList)
+let brazilTeam = NationalTeam(name : "Brazil", plantilla : brazilList)
+let suizaTeam = NationalTeam(name : "Suiza", plantilla : suizaList)
+let camerunTeam = NationalTeam(name : "Camerún", plantilla : camerunList)
+let serbiaTeam = NationalTeam(name : "Serbia", plantilla : serbiaList)
+let portugalTeam = NationalTeam(name : "Portugal", plantilla : portugalList)
+let cordeadelsurTeam = NationalTeam(name : "Corea del Sur", plantilla : coreadelsurList)
+let uruguayTeam = NationalTeam(name : "Uruguay", plantilla : uruguayList)
+let ghanaTeam = NationalTeam(name : "Ghana", plantilla : ghanaList)
+
+///CREAMOS LA LISTA CON TODOS LOS PARTICIPANTES
+
+let qatarParticipants22 : [NationalTeam] = [paisesbajosTeam, senegalTeam, ecuadorTeam, qatarTeam, inglaterraTeam,usaTeam, iranTeam, galesTeam, poloniaTeam, argentinaTeam, mexicoTeam, arabiasaudiTeam, franciaTeam, australiaTeam, tunezTeam, dinamarcaTeam, japonTeam, españaTeam, alemaniaTeam,costaricaTeam, marruecosTeam, croaciaTeam, belgicaTeam, canadaTeam,brazilTeam, suizaTeam, camerunTeam, serbiaTeam, portugalTeam, cordeadelsurTeam, uruguayTeam,ghanaTeam]
     
 //6. EJERCICIO
 /* RECRAREMOS EL MUNDIAL DE QATAR EN LA CLASE WorldCup*/
 print(" Qatar World Cuo 2022")
     
-class WorldCup {
-    var participants: [NationalTeam] = []
-    
-    init(participants : [NationalTeam]){
-        self.participants = participants
-    }
-    
-}
+
 
 
 
@@ -245,11 +309,15 @@ class GroupWorldCup {
         var clasificationGroup : [Int:Int] = [:]
         let initialPoint = 0
         var teamAmount : Int = (self.player.count) - 1
+        print("create clasification dentro")
         for initialPos in 0...teamAmount {
             clasificationGroup[initialPos] = 0
 
         }
+        print("create clasification fuera")
+        print("\(clasificationGroup ) el grupo de ahora es este PRUEBA")
         return clasificationGroup
+        
         
     }
     
@@ -271,6 +339,7 @@ class GroupWorldCup {
             for posLocal in 0..<3 {
                 /* el loop for deberia de ser  for posLocal in 0..< ((self.player.count)-1) pero me da error
                  no interesa que llega al último equipo, ya ha jugado contra todos*/
+                print("partidos grpo dentro")
                 for posVisit in 1..<self.player.count{
                     positionVisit = posVisit + index
                     var result = gameMatch.playMatch(local: posLocal, visit: positionVisit)
@@ -282,12 +351,14 @@ class GroupWorldCup {
                         switch (flag){
                         case true: break/*para que salte este Foor y vaya a la penúltima selección*/
                         default: continue
-                            
+                    
                         }
+                    
                     }
+                    
                     else if flag == true {break}/*salta del último valor y acaba*/
                 }
-
+                print("partidos grpo dentro")
                 index += 1
             
             }
@@ -315,15 +386,17 @@ func continueWC(players group : [NationalTeam],points classificationPoints : [In
     var avoidElementTeams : [Int] = [] /* ya que la funcion localizador de abajo no le importa si varios equipos tienen la puntuacion repetida, devolveria la primera: Ejemplo Si Argentina y Colombia tienen 6 puntos, devolvería dos veces Argentina. En esta aádiremos la posición de la lista  de equipos [NationalTeam], mediante un condiciaonal evitaremos repetir la posicion */
     var valuesListSort = valuesList.sorted(by: >)
     print(valuesListSort)
+    print("continue  2 dentro")
     for i in 0...number{
         /* como en el mundial se clasifican 2 equipos por grupo seria sificiente poner  0...2, pero estas funciones pueden servir para la clasificatoria al mundial y como desconozco guantos grupos pasan lo pongo como eleccionable. SI pusiera un número mágico sería más rápido*/
         element  = localizador(puntos: points, valor: valuesListSort[i], lista: avoidElementTeams)
         avoidElementTeams.append(element)
         classificatedList.append(players[element])
         print(classificatedList[i].name, " \(i) equipo")
-        
-    }
     
+    }
+    print("continue  2 fuera")
+
     func localizador(puntos: [Int: Int], valor : Int, lista : [Int]) -> (Int){
         var pos : Int = 0
         for(key, value) in puntos{
@@ -344,23 +417,221 @@ func continueWC(players group : [NationalTeam],points classificationPoints : [In
     }*/
 }
 
-let colombiaList  = [Member.coach("gabriel"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
-let argentinaLis  = [Member.coach("rene"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
-let mexicoList  = [Member.coach("andres"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
-let chileList  = [Member.coach("paco"), Member.staff("staff"), Member.player("player1"),Member.player("player2"),Member.player("player3"),Member.player("player4")]
+
+
+class WorldCup {
+    var participants: [NationalTeam] = []
+    let alphabete : [String] = ["A", "B", "C", "D", "E", "F", "G","H","I","J", "K", "L", "M","N", "Ñ", "O", "P","Q","R","S","T", "U","V", "Y","Z"]
+    
+    init(participants : [NationalTeam]){
+        self.participants = participants
+    }
+    
+    func dividirGrupo ( cantidad miembros : Int) -> [[NationalTeam]] {
+        var index :Int = 0
+        var amount : Int = 7 /* cantidad de grupos totales - 1 */
+        var groupNumber : Int = miembros - 1
+        var mainGroups : [[NationalTeam]] = [ ]
+        var groups : [NationalTeam] = [ ]
+        for _ in 1...amount{
+            print("1")
+            for num in 0...groupNumber{
+                print("2")
+                groups.append(self.participants[num + index])
+            }
+            index += 4
+            mainGroups.append(groups)
+        }
+        return mainGroups
+    }
+    //func play()-> [[NationalTeam]]{
+        /*
+        var classificatedTeams : [[NationalTeam]] = [ ]/* para saber quienes se clasifican*/
+        var organizeGroups : [[NationalTeam]] = dividirGrupo(cantidad: 4)/* ejecutar la division de grupos(van en orden de introduccion)*/
+        /* primero va la fase de grupo*/
+        
+        //A
+        let groupA = GroupWorldCup(group: "A" , player: organizeGroups[0])
+        let obtainClassificationA = groupA.playGroupWC()
+        let nextLevelA = continueWC(players: obtainClassificationA.0, points: obtainClassificationA.1, toNext: 2)
+        classificatedTeams.append(nextLevelA)
+        print(nextLevelA)
+        //B
+        let groupB = GroupWorldCup(group: "B" , player: organizeGroups[1])
+        let obtainClassificationB : ([NationalTeam],[Int:Int]) = groupB.playGroupWC()
+        let nextLevelB = continueWC(players: obtainClassificationB.0, points: obtainClassificationB.1, toNext: 2)
+        classificatedTeams.append(nextLevelB)
+        print(nextLevelB)
+        
+        //C
+        let groupC = GroupWorldCup(group: "C" , player: organizeGroups[2])
+        let obtainClassificationC = groupC.playGroupWC()
+        let nextLevelC = continueWC(players: obtainClassificationC.0, points: obtainClassificationC.1, toNext: 2)
+        classificatedTeams.append(nextLevelC)
+        print(nextLevelC)
+        //D
+        let groupD = GroupWorldCup(group: "D" , player: organizeGroups[3])
+        let obtainClassificationD = groupD.playGroupWC()
+        let nextLevelD = continueWC(players: obtainClassificationD.0, points: obtainClassificationD.1, toNext: 2)
+        classificatedTeams.append(nextLevelD)
+        print(nextLevelD)
+        //E
+        let groupE = GroupWorldCup(group: "E" , player: organizeGroups[4])
+        let obtainClassificationE = groupE.playGroupWC()
+        let nextLevelE = continueWC(players: obtainClassificationE.0, points: obtainClassificationE.1, toNext: 2)
+        classificatedTeams.append(nextLevelE)
+        print(nextLevelE)
+        //F
+        let groupF = GroupWorldCup(group: "F" , player: organizeGroups[5])
+        let obtainClassificationF = groupF.playGroupWC()
+        let nextLevelF = continueWC(players: obtainClassificationF.0, points: obtainClassificationF.1, toNext: 2)
+        classificatedTeams.append(nextLevelF)
+        print(nextLevelF)
+        //G
+        let groupG = GroupWorldCup(group: "G" , player: organizeGroups[6])
+        let obtainClassificationG = groupG.playGroupWC()
+        let nextLevelG = continueWC(players: obtainClassificationG.0, points: obtainClassificationG.1, toNext: 2)
+        classificatedTeams.append(nextLevelG)
+        print(nextLevelG)
+        //H
+        let groupH = GroupWorldCup(group: "H" , player: organizeGroups[7])
+        let obtainClassificationH = groupH.playGroupWC()
+        let nextLevelH = continueWC(players: obtainClassificationH.0, points: obtainClassificationH.1, toNext: 2)
+        classificatedTeams.append(nextLevelH)
+        print(nextLevelH)
+        */
+        
             
-let colombiaTeam = NationalTeam(name : "Colombia", plantilla : colombiaList)
-let argentinaTeam = NationalTeam(name : "Argentina", plantilla : colombiaList)
-let mexicoTeam = NationalTeam(name : "Mexico", plantilla : colombiaList)
-let chileTeam = NationalTeam(name : "Chile", plantilla : colombiaList)
+        
+        
+       // return classificatedTeams
+  //  }
+}
 
-let qatarParticipants22 : [NationalTeam] = [colombiaTeam, argentinaTeam, mexicoTeam, chileTeam]
-let worldCupqatar22 = WorldCup(participants : qatarParticipants22)
+/*
+let mundial = WorldCup(participants: qatarParticipants22)
+mundial.play()
+*/
+
+///////////////////////////////////PRUEBA:
+func dividirPrueba (equipo: [NationalTeam], cantidad miembros : Int) -> [[NationalTeam]] {
+    var participants = equipo
+    var index :Int = 0
+    var amount : Int = 8 /* cantidad de grupos totales - 1 */
+    var groupNumber : Int = miembros - 1
+    var mainGroups : [[NationalTeam]] = [ ]
+    print("estamos aqui")
+    for i in 1...amount{
+        print("\(i)  analizando los I")
+        var groups : [NationalTeam] = [ ]
+        for num in 0...groupNumber{
+            groups.append(participants[num + index])
+        }
+        print("\(i)  analizando los I")
+
+        index += 4
+        mainGroups.append(groups)
+    }
+    return mainGroups
+}
+
+/*
+var classificatedTeams : [[NationalTeam]] = [ ]/* para saber quienes se clasifican*/
+var organizeGroups = WorldCup(participants: qatarParticipants22)
+var dividedGroups  : [[NationalTeam]] = organizeGroups.dividirGrupo(cantidad: 4)
+*/
+
+//PRUEBA!!!!!!!!!!!
+var classificatedTeams : [[NationalTeam]] = [ ]/* para saber quienes se clasifican*/
+var dividedGroups  : [[NationalTeam]] = dividirPrueba(equipo: qatarParticipants22, cantidad: 4)
+/*
+//A
+let groupA = GroupWorldCup(group: "A" , player: dividedGroups[0])
+let obtainClassificationA :([NationalTeam], [Int:Int]) = groupA.playGroupWC()
+let nextLevelA : [NationalTeam ] = continueWC(players: obtainClassificationA.0, points: obtainClassificationA.1, toNext: 2)
+classificatedTeams.append(nextLevelA)
+print(nextLevelA)
+print(classificatedTeams)//B
+let groupB = GroupWorldCup(group: "B" , player: dividedGroups[1])
+let obtainClassificationB : ([NationalTeam],[Int:Int]) = groupB.playGroupWC()
+let nextLevelB = continueWC(players: obtainClassificationB.0, points: obtainClassificationB.1, toNext: 2)
+classificatedTeams.append(nextLevelB)
+ 
+print(nextLevelB)
+ 
+print(classificatedTeams)
+
+*/
 
 
-let groupA = GroupWorldCup(group: "A", player: qatarParticipants22)
 
-let  groupAresults :([NationalTeam],[Int:Int]) = groupA.playGroupWC()
-let leaders : [NationalTeam] = continueWC(players: groupAresults.0, points: groupAresults.1, toNext: 2)
+
+
+
+//A
+let groupA = GroupWorldCup(group: "A" , player: dividedGroups[0])
+let obtainClassificationA :([NationalTeam], [Int:Int]) = groupA.playGroupWC()
+let nextLevelA : [NationalTeam ] = continueWC(players: obtainClassificationA.0, points: obtainClassificationA.1, toNext: 2)
+classificatedTeams.append(nextLevelA)
+print(nextLevelA)
+//B
+let groupB = GroupWorldCup(group: "B" , player: dividedGroups[1])
+let obtainClassificationB : ([NationalTeam],[Int:Int]) = groupB.playGroupWC()
+let nextLevelB = continueWC(players: obtainClassificationB.0, points: obtainClassificationB.1, toNext: 2)
+classificatedTeams.append(nextLevelB)
+print(nextLevelB)
+
+//C
+let groupC = GroupWorldCup(group: "C" , player: dividedGroups[2])
+let obtainClassificationC = groupC.playGroupWC()
+let nextLevelC = continueWC(players: obtainClassificationC.0, points: obtainClassificationC.1, toNext: 2)
+classificatedTeams.append(nextLevelC)
+print(nextLevelC)
+//D
+let groupD = GroupWorldCup(group: "D" , player: dividedGroups[3])
+let obtainClassificationD = groupD.playGroupWC()
+let nextLevelD = continueWC(players: obtainClassificationD.0, points: obtainClassificationD.1, toNext: 2)
+classificatedTeams.append(nextLevelD)
+print(nextLevelD)
+//E
+let groupE = GroupWorldCup(group: "E" , player: dividedGroups[4])
+let obtainClassificationE = groupE.playGroupWC()
+let nextLevelE = continueWC(players: obtainClassificationE.0, points: obtainClassificationE.1, toNext: 2)
+classificatedTeams.append(nextLevelE)
+print(nextLevelE)
+//F
+let groupF = GroupWorldCup(group: "F" , player: dividedGroups[5])
+let obtainClassificationF = groupF.playGroupWC()
+let nextLevelF = continueWC(players: obtainClassificationF.0, points: obtainClassificationF.1, toNext: 2)
+classificatedTeams.append(nextLevelF)
+print(nextLevelF)
+//G
+let groupG = GroupWorldCup(group: "G" , player: dividedGroups[6])
+let obtainClassificationG = groupG.playGroupWC()
+let nextLevelG = continueWC(players: obtainClassificationG.0, points: obtainClassificationG.1, toNext: 2)
+classificatedTeams.append(nextLevelG)
+print(nextLevelG)
+print(classificatedTeams)
+//H
+print("grupo H inicio")
+let groupH = GroupWorldCup(group: "H" , player: dividedGroups[7])
+
+let obtainClassificationH = groupH.playGroupWC()
+let nextLevelH = continueWC(players: obtainClassificationH.0, points: obtainClassificationH.1, toNext: 2)
+classificatedTeams.append(nextLevelH)
+print(nextLevelH)
+print(classificatedTeams)
+
+
+/*
+let qatarParticipants22_prueba : [NationalTeam] = [paisesbajosTeam,senegalTeam,ecuadorTeam, qatarTeam]
+let worldCupqatar22 = WorldCup(participants : qatarParticipants22_prueba)
+
+
+let groupA_prueba = GroupWorldCup(group: "A", player: qatarParticipants22_prueba)
+
+let  groupAresults_prueba :([NationalTeam],[Int:Int]) = groupA_prueba.playGroupWC()
+let leaders : [NationalTeam] = continueWC(players: groupAresults_prueba.0, points: groupAresults_prueba.1, toNext: 2)
+ */
 
 
