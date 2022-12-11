@@ -35,11 +35,22 @@ func getNumerosPrimos(amount: Int=100) -> Array<Int> {
         
         if listPrime.count >= amount {flag = false} else{continue}
     }
-    print (listPrime)
     return listPrime
 }
-
+func showPrimeNumbers(lista : [Int], cuantas : Int){
+    var numeros :[Int] = [ ]
+    let start : Int = lista.count - cuantas
+    let end : Int = lista.count
+    for num in (start...end).reversed(){
+        numeros.append(num)
+    }
+    print(numeros)
+}
 getNumerosPrimos(amount:15)
+showPrimeNumbers(lista: getNumerosPrimos(amount:100), cuantas: 10)
+
+
+
 
 
 //2. EJERCICIO
@@ -245,11 +256,10 @@ class Points{
     }
     
     
-    /* reparto de puntos; como no he conseguido declarar(no se porqué) un grupo con self que sería más fácil de actualizar
-     tendré que darle el elemento clasificación al repartir puntos y devolve el mismo actualizado cada vez*/
+   
     func givePoint (winner: Int, loser: Int, tie: Bool,  started : Bool) ->[Int: Int]{
-        
-        
+        /* reparto de puntos; como no he conseguido declarar(no se porqué) un grupo con self que sería más fácil de actualizar
+         tendré que darle el elemento clasificación al repartir puntos y devolve el mismo actualizado cada vez*/
         switch (started){
         case false: break
         case true:
@@ -284,37 +294,16 @@ class GroupWorldCup {
         
         
     }
-       /*
-     ///Mensaje: mi idea era hacer todo usando objetos NationalTeam. que son las selecciones, pero en la función de crear grupo me salta un error de no 'Hasable'-> cambio formato. Entonces todo será según la posición incial del equipo en la lista declarada en el init;
-          Lo saco fuera como una clase
-    private func match (local : NationalTeam, visit: NationalTeam) -> (NationalTeam, NationalTeam, Bool) {
-        /* devolvemos una tupla con tres elementos el 1. ganador, 2. perdedor 3 si es empate sí o No*/
-        let localPlayer : NationalTeam = local
-        let visitPlayer : NationalTeam = visit
-        let resultLocal = Int.random(in: 0...10)
-        let resultVisit = Int.random(in: 0...10)
-        var finalresulTuple : (NationalTeam, NationalTeam, Bool)
-        print("\(localPlayer.name)  \(resultLocal) - \(resultVisit) \(visitPlayer.name)")
-        if( (resultLocal - resultVisit) > 0 ){
-            finalresulTuple = (localPlayer,visitPlayer, false)}
-        else if( (resultLocal - resultVisit) < 0 ){
-            finalresulTuple = (visitPlayer,localPlayer, false)}
-        else {
-            finalresulTuple = (localPlayer,visitPlayer, true)}
-        return finalresulTuple
-    }
-     */
+    
     func createClassification( ) -> [ Int : Int]{
         /* creamos un diccionario con la lista de grupos que facilitamos en el init*/
         var clasificationGroup : [Int:Int] = [:]
         let initialPoint = 0
         var teamAmount : Int = (self.player.count) - 1
-        print("create clasification dentro")
         for initialPos in 0...teamAmount {
             clasificationGroup[initialPos] = 0
 
         }
-        print("create clasification fuera")
         print("\(clasificationGroup ) el grupo de ahora es este PRUEBA")
         return clasificationGroup
         
@@ -322,13 +311,12 @@ class GroupWorldCup {
     }
     
     
-    /* Método que se encarga del grupo. Selecciona los equipos y llama a matchy para obtener un resultado
-     Para acabar se encargará llamar al reparto de puntos*/
+   
     func playGroupWC () -> ([NationalTeam],[Int:Int]) {
-
+        /* Método que se encarga del grupo. Selecciona los equipos y llama a matchy para obtener un resultado
+         Para acabar se encargará llamar al reparto de puntos*/
         var groupclassification = Points(teams: self.player, classification: createClassification())
         groupclassification.givePoint(winner: 1, loser: 2, tie: false, started: false)
-        //var groupPosition = up(winner: 1, loser: 2, tie: false, updateClassification: groupclassification, started: false)
         var gameMatch = MatchOperation(teams: self.player)
         var positionVisit : Int = 0
         switch(self.player.count){
@@ -339,12 +327,10 @@ class GroupWorldCup {
             for posLocal in 0..<3 {
                 /* el loop for deberia de ser  for posLocal in 0..< ((self.player.count)-1) pero me da error
                  no interesa que llega al último equipo, ya ha jugado contra todos*/
-                print("partidos grpo dentro")
                 for posVisit in 1..<self.player.count{
                     positionVisit = posVisit + index
                     var result = gameMatch.playMatch(local: posLocal, visit: positionVisit)
                     groupclassification.givePoint(winner: result.0, loser: result.1, tie: result.2, started: true)
-                    //givePoint(winner: result.0, loser: result.1, tie: result.2, updateClassification: groupPosition, started: true)
                     if (flag == false && (posVisit + index ) == 2 && index == 1) { flag = true }/*activa el flag*/
                     else if(flag == true  && (posVisit + index ) == 1 && index == 2){
                         /* Es una forma fea de parar los partidos;  debido a la suma de index sale de l range, por lo que he tenido que poner parches de flags y condicionales para saber pararlo*/
@@ -385,8 +371,6 @@ func continueWC(players group : [NationalTeam],points classificationPoints : [In
     var element : Int
     var avoidElementTeams : [Int] = [] /* ya que la funcion localizador de abajo no le importa si varios equipos tienen la puntuacion repetida, devolveria la primera: Ejemplo Si Argentina y Colombia tienen 6 puntos, devolvería dos veces Argentina. En esta aádiremos la posición de la lista  de equipos [NationalTeam], mediante un condiciaonal evitaremos repetir la posicion */
     var valuesListSort = valuesList.sorted(by: >)
-    print(valuesListSort)
-    print("continue  2 dentro")
     for i in 0...number{
         /* como en el mundial se clasifican 2 equipos por grupo seria sificiente poner  0...2, pero estas funciones pueden servir para la clasificatoria al mundial y como desconozco guantos grupos pasan lo pongo como eleccionable. SI pusiera un número mágico sería más rápido*/
         element  = localizador(puntos: points, valor: valuesListSort[i], lista: avoidElementTeams)
@@ -395,7 +379,6 @@ func continueWC(players group : [NationalTeam],points classificationPoints : [In
         print(classificatedList[i].name, " \(i) equipo")
     
     }
-    print("continue  2 fuera")
 
     func localizador(puntos: [Int: Int], valor : Int, lista : [Int]) -> (Int){
         var pos : Int = 0
@@ -409,12 +392,7 @@ func continueWC(players group : [NationalTeam],points classificationPoints : [In
     print(classificatedList[0].name, classificatedList[1].name)
     return classificatedList
     
-    /* let valuesListSort = valuesList.sort(by: >)
-    for num in points{
-        switch(num){
-        case let x where(valuesListSort[0] == num.value): continue
-        }
-    }*/
+ 
 }
 
 
@@ -508,10 +486,6 @@ class WorldCup {
   //  }
 }
 
-/*
-let mundial = WorldCup(participants: qatarParticipants22)
-mundial.play()
-*/
 
 ///////////////////////////////////PRUEBA:
 func dividirPrueba (equipo: [NationalTeam], cantidad miembros : Int) -> [[NationalTeam]] {
@@ -535,34 +509,11 @@ func dividirPrueba (equipo: [NationalTeam], cantidad miembros : Int) -> [[Nation
     return mainGroups
 }
 
-/*
-var classificatedTeams : [[NationalTeam]] = [ ]/* para saber quienes se clasifican*/
-var organizeGroups = WorldCup(participants: qatarParticipants22)
-var dividedGroups  : [[NationalTeam]] = organizeGroups.dividirGrupo(cantidad: 4)
-*/
+
 
 //PRUEBA!!!!!!!!!!!
 var classificatedTeams : [[NationalTeam]] = [ ]/* para saber quienes se clasifican*/
 var dividedGroups  : [[NationalTeam]] = dividirPrueba(equipo: qatarParticipants22, cantidad: 4)
-/*
-//A
-let groupA = GroupWorldCup(group: "A" , player: dividedGroups[0])
-let obtainClassificationA :([NationalTeam], [Int:Int]) = groupA.playGroupWC()
-let nextLevelA : [NationalTeam ] = continueWC(players: obtainClassificationA.0, points: obtainClassificationA.1, toNext: 2)
-classificatedTeams.append(nextLevelA)
-print(nextLevelA)
-print(classificatedTeams)//B
-let groupB = GroupWorldCup(group: "B" , player: dividedGroups[1])
-let obtainClassificationB : ([NationalTeam],[Int:Int]) = groupB.playGroupWC()
-let nextLevelB = continueWC(players: obtainClassificationB.0, points: obtainClassificationB.1, toNext: 2)
-classificatedTeams.append(nextLevelB)
- 
-print(nextLevelB)
- 
-print(classificatedTeams)
-
-*/
-
 
 
 
@@ -622,16 +573,10 @@ classificatedTeams.append(nextLevelH)
 print(nextLevelH)
 print(classificatedTeams)
 
-
-/*
-let qatarParticipants22_prueba : [NationalTeam] = [paisesbajosTeam,senegalTeam,ecuadorTeam, qatarTeam]
-let worldCupqatar22 = WorldCup(participants : qatarParticipants22_prueba)
-
-
-let groupA_prueba = GroupWorldCup(group: "A", player: qatarParticipants22_prueba)
-
-let  groupAresults_prueba :([NationalTeam],[Int:Int]) = groupA_prueba.playGroupWC()
-let leaders : [NationalTeam] = continueWC(players: groupAresults_prueba.0, points: groupAresults_prueba.1, toNext: 2)
- */
-
+/* Una función extra para mostrar los nombres de los clasificados*/
+for grupo in classificatedTeams{
+    for team in grupo{
+        print(team.name)
+    }
+}
 
